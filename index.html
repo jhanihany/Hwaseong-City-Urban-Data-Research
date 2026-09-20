@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff7cf" />
+  <meta name="description" content="화성부기 어린이 안전 지도 포스터 웹 뷰어" />
+  <title>어린이 안전 지도 | 화성부기</title>
+  <link rel="preload" as="image" href="assets/poster.webp" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="toolbar" aria-label="포스터 보기 도구">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div class="brand-copy">
+        <strong>어린이 안전 지도</strong>
+        <span>화성부기 · Urban AI</span>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="확대 축소">
+      <button class="icon-button" id="zoomOut" type="button" aria-label="축소" title="축소">−</button>
+      <button class="zoom-label" id="zoomLabel" type="button" title="100%로 초기화">100%</button>
+      <button class="icon-button" id="zoomIn" type="button" aria-label="확대" title="확대">+</button>
+      <button class="text-button" id="fitWidth" type="button" title="화면 너비에 맞춤">화면 맞춤</button>
+      <a class="text-button secondary" href="assets/original.pdf" target="_blank" rel="noopener">원본 PDF</a>
+    </div>
+  </header>
+
+  <main class="viewer-shell">
+    <div class="viewer" id="viewer" tabindex="0" aria-label="확대 및 스크롤 가능한 포스터">
+      <div class="poster-stage" id="posterStage">
+        <img
+          id="poster"
+          src="assets/poster.webp"
+          alt="화성부기 어린이 안전 지도 포스터"
+          draggable="false"
+        />
+      </div>
+    </div>
+
+    <div class="hint" id="hint" aria-hidden="true">
+      <span class="desktop-hint">Ctrl/⌘ + 휠로 확대 · 드래그 또는 스크롤로 이동</span>
+      <span class="mobile-hint">두 손가락으로 확대 · 한 손가락으로 스크롤</span>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

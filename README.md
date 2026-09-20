@@ -1,0 +1,28 @@
+# 어린이 안전 지도 - Web Poster Viewer
+
+화성부기 어린이 안전 지도 포스터를 GitHub Pages에서 확대/축소 및 스크롤하며 볼 수 있도록 만든 정적 웹 뷰어입니다.
+
+## 기능
+
+- 포스터 전체를 화면 너비에 맞춰 표시
+- `+` / `-` 버튼 확대·축소
+- 확대율 클릭 시 100% 보기
+- `화면 맞춤` 버튼으로 전체 너비에 맞추기
+- 데스크톱: `Ctrl`/`Cmd` + 마우스 휠 확대·축소
+- 모바일: 두 손가락 핀치 확대·축소, 한 손가락 스크롤
+- 원본 PDF 새 탭에서 열기
+
+## GitHub Pages 배포
+
+저장소 루트에 아래 구조 그대로 업로드합니다.
+
+```text
+index.html
+style.css
+script.js
+assets/
+  poster.webp
+  original.pdf
+```
+
+GitHub 저장소에서 `Settings > Pages > Deploy from a branch > main > /(root)`를 선택하면 됩니다.
