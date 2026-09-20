@@ -1,0 +1,290 @@
+:root{
+  --header-h:72px;
+  --ink:#162033;
+  --muted:#6f7786;
+  --line:rgba(22,32,51,.11);
+  --orange:#ec7b27;
+  --yellow:#ffd94a;
+  --green:#4e9f68;
+  --paper:#f7f8fa;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  overflow:hidden;
+  color:var(--ink);
+  background:#eef2f3;
+  font-family:Pretendard,"Noto Sans KR",Apple SD Gothic Neo,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+button,a{font:inherit;color:inherit}
+button{cursor:pointer}
+
+.ribbon{
+  position:fixed;
+  z-index:100;
+  inset:0 0 auto 0;
+  height:var(--header-h);
+  display:grid;
+  grid-template-columns:minmax(220px,1fr) auto minmax(90px,1fr);
+  align-items:center;
+  gap:18px;
+  padding:0 clamp(14px,2.6vw,38px);
+  background:rgba(255,255,255,.95);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 4px 20px rgba(20,28,44,.07);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+  text-decoration:none;
+}
+.brand-icon{
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border-radius:11px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--orange),#f1a12d);
+  box-shadow:0 8px 20px rgba(236,123,39,.22);
+}
+.brand-text{display:flex;flex-direction:column;min-width:0}
+.brand-text strong{
+  font-size:15px;
+  letter-spacing:-.02em;
+  white-space:nowrap;
+}
+.brand-text small{
+  margin-top:2px;
+  font-size:10px;
+  color:var(--muted);
+  letter-spacing:.04em;
+}
+
+.tabs{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:5px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#f4f6f8;
+}
+.tab{
+  position:relative;
+  height:40px;
+  padding:0 16px;
+  border:0;
+  border-radius:10px;
+  background:transparent;
+  color:#667085;
+  font-size:13px;
+  font-weight:800;
+  transition:.18s ease;
+}
+.tab:hover{background:rgba(255,255,255,.72);color:#26324b}
+.tab.active{
+  background:#fff;
+  color:var(--ink);
+  box-shadow:0 2px 10px rgba(28,39,57,.08);
+}
+.tab-dot{
+  display:inline-block;
+  width:7px;height:7px;
+  margin-right:6px;
+  border-radius:50%;
+  background:var(--green);
+  vertical-align:1px;
+}
+.pdf-link{
+  justify-self:end;
+  display:inline-flex;
+  align-items:center;
+  height:38px;
+  padding:0 13px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  color:#4f596d;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:800;
+}
+
+.app-shell{
+  position:fixed;
+  inset:var(--header-h) 0 0;
+}
+.view{
+  position:absolute;
+  inset:0;
+  display:none;
+}
+.view.active{display:block}
+
+#mapView{
+  background:#e8edeb;
+}
+#mapFrame{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+.map-guide{
+  position:absolute;
+  z-index:5;
+  left:18px;
+  bottom:18px;
+  max-width:min(440px,calc(100vw - 36px));
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:12px 15px;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:13px;
+  background:rgba(19,27,40,.78);
+  color:#fff;
+  box-shadow:0 8px 28px rgba(17,24,39,.18);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  pointer-events:none;
+}
+.map-guide strong{font-size:12px}
+.map-guide span{font-size:11px;color:rgba(255,255,255,.78);line-height:1.45}
+
+/* poster */
+.poster-view{
+  background:
+    radial-gradient(circle at 8% 5%,rgba(255,217,74,.18),transparent 24%),
+    linear-gradient(180deg,#f5f6f8,#e7eaee);
+}
+.poster-scroll{
+  position:absolute;
+  inset:0;
+  overflow:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-x pan-y;
+  outline:none;
+}
+.poster-stage{
+  width:max-content;
+  min-width:100%;
+  min-height:100%;
+  padding:32px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+#poster{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:none;
+  border-radius:5px;
+  background:#fff9cf;
+  box-shadow:0 22px 70px rgba(31,38,53,.18);
+  user-select:none;
+  -webkit-user-select:none;
+}
+.poster-tools{
+  position:fixed;
+  z-index:20;
+  right:20px;
+  bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:6px;
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:14px;
+  background:rgba(255,255,255,.9);
+  box-shadow:0 12px 38px rgba(23,31,46,.16);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.poster-tools button{
+  height:38px;
+  min-width:38px;
+  padding:0 11px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#fff;
+  font-weight:800;
+}
+.poster-tools button:hover{background:#f6f7f9}
+.poster-tools .zoom-readout{min-width:64px;font-size:12px}
+.poster-tools .fit-button{font-size:12px}
+.poster-hint{
+  position:fixed;
+  z-index:18;
+  left:20px;
+  bottom:20px;
+  padding:9px 12px;
+  border-radius:999px;
+  background:rgba(21,28,41,.74);
+  color:#fff;
+  font-size:11px;
+  box-shadow:0 8px 24px rgba(21,28,41,.14);
+  pointer-events:none;
+  transition:opacity .3s ease;
+}
+.poster-hint.hidden{opacity:0}
+
+@media(max-width:760px){
+  :root{--header-h:64px}
+  .ribbon{
+    grid-template-columns:1fr auto;
+    gap:10px;
+    padding:0 10px 0 12px;
+  }
+  .brand-icon{width:30px;height:30px;border-radius:9px}
+  .brand-text strong{font-size:13px}
+  .brand-text small{display:none}
+  .tabs{
+    position:fixed;
+    z-index:120;
+    left:50%;
+    bottom:12px;
+    transform:translateX(-50%);
+    width:calc(100% - 24px);
+    justify-content:center;
+    padding:5px;
+    background:rgba(255,255,255,.94);
+    box-shadow:0 10px 30px rgba(24,33,48,.16);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+  .tab{
+    flex:1;
+    padding:0 9px;
+    white-space:nowrap;
+    font-size:12px;
+  }
+  .pdf-link{font-size:11px;height:34px}
+  .map-guide{
+    left:10px;
+    right:10px;
+    bottom:74px;
+    max-width:none;
+  }
+  .poster-stage{padding:12px 12px 90px}
+  .poster-tools{
+    right:12px;
+    bottom:72px;
+  }
+  .poster-hint{
+    display:none;
+  }
+  .fit-button{display:none}
+}
+
+@media(max-width:430px){
+  .brand-text strong{font-size:12px}
+  .pdf-link{padding:0 9px}
+}
